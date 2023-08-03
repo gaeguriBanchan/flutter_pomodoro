@@ -16,15 +16,67 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Flexible(
             flex: 1,
-            child: Container(),
+            child: Container(
+              alignment: Alignment.bottomCenter,
+              child: Text(
+                '25:00',
+                style: TextStyle(
+                  color: Theme.of(context).cardColor,
+                  fontSize: 89,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
           ),
           Flexible(
-            flex: 2,
-            child: Container(),
+            flex: 3,
+            child: Center(
+              child: IconButton(
+                iconSize: 98,
+                color: Theme.of(context).cardColor,
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.play_circle_outlined,
+                ),
+              ),
+            ),
           ),
           Flexible(
             flex: 1,
-            child: Container(),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'pomodoro',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            color:
+                                Theme.of(context).textTheme.displayLarge!.color,
+                          ),
+                        ),
+                        Text(
+                          '0',
+                          style: TextStyle(
+                            fontSize: 58,
+                            fontWeight: FontWeight.w600,
+                            color:
+                                Theme.of(context).textTheme.displayLarge!.color,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
