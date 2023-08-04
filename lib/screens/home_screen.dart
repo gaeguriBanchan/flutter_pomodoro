@@ -11,7 +11,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   // oneCycle 시간 리스트
   static var numList = [900, 1200, 1500, 1800, 2100];
-  // static var numList = [3, 20, 25, 30, 35];
+  // static var numList = [15, 20, 25, 30, 35];
   // 휴식
   static var restTime = 300;
   // static var restTime = 5;
@@ -25,21 +25,26 @@ class _HomeScreenState extends State<HomeScreen> {
   int totalRest = 0;
   late Timer timer;
 
-  bool typeSecend = false;
+  // '분'을 '초'로 바꾸는 버튼용
+  // bool typeSecend = false;
 
-  void changeSeconed() {
-    setState(() {
-      numList = [15, 20, 25, 30, 35];
-      restTime = 5;
-      typeSecend = true;
-    });
-  }
+  // '분'을 '초'로 바꾸는 버튼용
+  // void changeSeconed() {
+  //   setState(() {
+  //     numList = [15, 20, 25, 30, 35];
+  //     restTime = 5;
+  //     typeSecend = true;
+  //   });
+  // }
 
   void onTick(Timer timer) {
     if (totalSeconds == 0) {
       setState(() {
         totalPomodoros += 1;
-        if (totalPomodoros == 4) {
+        if (goalPomodoros == 11 && totalPomodoros == 4) {
+          totalPomodoros = 0;
+          goalPomodoros = 0;
+        } else if (totalPomodoros == 4) {
           goalPomodoros += 1;
           totalPomodoros = 0;
         }
@@ -186,139 +191,60 @@ class _HomeScreenState extends State<HomeScreen> {
             Flexible(
               flex: 1,
               child: Center(
-                child: Column(
-                  children: typeSecend
-                      ? [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              TextButton(
-                                onPressed: onFifteen,
-                                child: Text(
-                                  '15',
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    color: Theme.of(context).cardColor,
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: onTwenty,
-                                child: Text(
-                                  '20',
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    color: Theme.of(context).cardColor,
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: onTwentyFive,
-                                child: Text(
-                                  '25',
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    color: Theme.of(context).cardColor,
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: onThirty,
-                                child: Text(
-                                  '30',
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    color: Theme.of(context).cardColor,
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: onThirtyFive,
-                                child: Text(
-                                  '35',
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    color: Theme.of(context).cardColor,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Text(
-                            '영상촬영을 위해 "분"을 "초"로 변경했습니다.',
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Theme.of(context).cardColor,
-                            ),
-                          )
-                        ]
-                      : [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              TextButton(
-                                onPressed: onFifteen,
-                                child: Text(
-                                  '15',
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    color: Theme.of(context).cardColor,
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: onTwenty,
-                                child: Text(
-                                  '20',
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    color: Theme.of(context).cardColor,
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: onTwentyFive,
-                                child: Text(
-                                  '25',
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    color: Theme.of(context).cardColor,
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: onThirty,
-                                child: Text(
-                                  '30',
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    color: Theme.of(context).cardColor,
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: onThirtyFive,
-                                child: Text(
-                                  '35',
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    color: Theme.of(context).cardColor,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          TextButton(
-                            onPressed: changeSeconed,
-                            child: Text(
-                              '영상촬영을 위해 "분"을 "초"로 변경하는 버튼',
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Theme.of(context).cardColor,
-                              ),
-                            ),
-                          )
-                        ],
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                      onPressed: onFifteen,
+                      child: Text(
+                        '15',
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Theme.of(context).cardColor,
+                        ),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: onTwenty,
+                      child: Text(
+                        '20',
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Theme.of(context).cardColor,
+                        ),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: onTwentyFive,
+                      child: Text(
+                        '25',
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Theme.of(context).cardColor,
+                        ),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: onThirty,
+                      child: Text(
+                        '30',
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Theme.of(context).cardColor,
+                        ),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: onThirtyFive,
+                      child: Text(
+                        '35',
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Theme.of(context).cardColor,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -330,7 +256,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: isRest
                       ? [
                           Text(
-                            'RestTime!',
+                            'Rest Time',
                             style: TextStyle(
                               fontSize: 25,
                               color: Theme.of(context).cardColor,
@@ -354,6 +280,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ]
                       : [
+                          Text(
+                            'Pomodoro Time',
+                            style: TextStyle(
+                              fontSize: 25,
+                              color: Theme.of(context).cardColor,
+                            ),
+                          ),
                           IconButton(
                             iconSize: 120,
                             color: Theme.of(context).cardColor,
